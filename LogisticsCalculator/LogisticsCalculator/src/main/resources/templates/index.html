@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="https://api-maps.yandex.ru/2.1/?apikey=61a714f5-49b4-4380-8214-5793b2af711d&lang=ru_RU"
+            type="text/javascript"></script>
+</head>
+<body>
+    <p>Карта Москвы</p>
+    <div id="map" style="width:400px; height:300px"></div>
+    <script>
+        function init(){
+            var myMap = new ymaps.Map("map", {
+                center: [55.76, 37.64],
+                zoom: 7,
+                controls: ['routePanelControl']
+            });
+        }
+
+        ymaps.ready(init);
+    </script>
+</body>
+</html>
