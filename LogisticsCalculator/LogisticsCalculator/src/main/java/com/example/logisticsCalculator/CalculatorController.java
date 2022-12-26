@@ -1,10 +1,10 @@
 package com.example.logisticsCalculator;
 
-import jakarta.servlet.http.HttpServletRequest;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.PostMapping;
+
 
 @Controller
 public class CalculatorController {
@@ -17,6 +17,10 @@ public class CalculatorController {
         catch (Exception ex) {
             return (ex.getMessage());
         }
+    }
+    @PostMapping("/calculate")
+    public String getData() {
+        return null;
     }
 
 }
