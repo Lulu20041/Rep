@@ -28,10 +28,22 @@ function init(){
             // что маршрут не пустой.
             if (activeRoute) {
                 // Вывод информации об активном маршруте.
-                const first = document.getElementById("first_point");
-                const second = document.getElementById("second_point");
-                first.value = activeRoute.properties.get("boundedBy")[0];
-                second.value = activeRoute.properties.get("boundedBy")[1];
+                const first_input = document.getElementById("first_point");
+                const second_input = document.getElementById("second_point");
+                //Координаты
+                const cords = activeRoute.properties.get("boundedBy");
+                //Обратный геокодинг
+                //Первая точка
+                let myReverseGeocoder = ymaps.geocode(cords[0]);
+                myReverseGeocoder.then( (res) => {
+                    second_input.value = res.geoObjects.get(0).properties.get('text');
+                })
+                //Вторая точка
+                myReverseGeocoder = ymaps.geocode(cords[1]);
+                myReverseGeocoder.then( (res) => {
+                    first_input.value = res.geoObjects.get(0).properties.get('text');
+                })
+
                 console.log("Длина: " + activeRoute.properties.get("distance").text);
                 console.log("Время прохождения: " + activeRoute.properties.get("duration").text);
                 console.log(activeRoute.properties);
